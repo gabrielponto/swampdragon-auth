@@ -7,8 +7,8 @@ def read(fname):
 
 setup(
     name="SwampDragon-auth",
-    version="0.1.3",
-    author="Jonas Hagstedt",
+    version="0.1.5",
+    author="Jonas Hagstedt, Gabriel Oliveira",
     author_email="hagstedt@gmail.com",
     description=("Access signed in django users in routers"),
     license="BSD",
