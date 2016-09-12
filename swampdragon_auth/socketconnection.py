@@ -2,7 +2,7 @@ from importlib import import_module
 from django.conf import settings
 from django.contrib.auth import get_user
 from swampdragon.connections.sockjs_connection import DjangoSubscriberConnection
-
+from rest_framework.authtoken.models import Token
 
 class _RequestWrapper(object):
 
@@ -42,11 +42,6 @@ class RemoteDataConnection(DjangoSubscriberConnection):
 
     def __init__(self, session):
         self._user = None
-        try:
-            from rest_framework.authtoken.models import Token
-        except ImportError:
-            raise ImportError(
-                "Django Rest Framework is required")
         super(RemoteDataConnection, self).__init__(session)
 
     def get_user(self):
@@ -62,3 +57,4 @@ class RemoteDataConnection(DjangoSubscriberConnection):
             self._user = t.user
         except Token.DoesNotExist:
             self._user = None
+                                               
